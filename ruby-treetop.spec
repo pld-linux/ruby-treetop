@@ -6,6 +6,7 @@ License:	Ruby's
 Group:		Development/Languages
 Source0:	http://gems.rubyforge.org/gems/treetop-1.3.0.gem
 # Source0-md5:	a1fbf9629f8052eeff592d437c8b47a6
+Patch0:	%{name}-gems.patch
 URL:		http://treetop.rubyforge.org
 BuildRequires:	rake
 BuildRequires:	rpmbuild(macros) >= 1.277
@@ -22,6 +23,7 @@ examples.
 %setup -q -c -n treetop-%{version}
 tar xzf data.tar.gz
 cp %{_datadir}/setup.rb .
+%patch0 -p1
 
 %build
 ruby setup.rb config \
