@@ -2,7 +2,7 @@
 Summary:	A packrat parser implementation for Ruby
 Name:		ruby-%{pkgname}
 Version:	1.4.4
-Release:	1
+Release:	2
 License:	Ruby's
 Group:		Development/Languages
 Source0:	http://rubygems.org/downloads/%{pkgname}-%{version}.gem
@@ -13,7 +13,7 @@ BuildRequires:	rpmbuild(macros) >= 1.484
 BuildRequires:	ruby >= 1:1.8.6
 BuildRequires:	ruby-modules
 BuildRequires:	ruby-rake
-Requires:	ruby-plyglot
+Requires:	ruby-polyglot
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
