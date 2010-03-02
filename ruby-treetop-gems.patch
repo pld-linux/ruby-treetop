@@ -1,18 +1,19 @@
-diff -ur treetop-1.3.0-o/bin/tt treetop-1.3.0/bin/tt
---- treetop-1.3.0-o/bin/tt	1969-12-31 17:00:00.000000000 -0700
-+++ treetop-1.3.0/bin/tt	2009-08-09 15:25:57.479000736 -0600
-@@ -1,8 +1,4 @@
- #!/usr/bin/env ruby
+diff -ur ruby-treetop-1.4.4/bin/tt ruby-treetop-1.4.4-nogems/bin/tt
+--- ruby-treetop-1.4.4/bin/tt	2010-02-20 01:30:39.000000000 +0100
++++ ruby-treetop-1.4.4-nogems/bin/tt	2010-03-02 16:20:08.889260038 +0100
+@@ -1,8 +1,6 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ require 'optparse'
 -require 'rubygems'
--gem 'treetop'
--
+ 
 -$LOAD_PATH.unshift(File.expand_path(File.dirname(__FILE__) + "/../lib"))
  require 'treetop'
+ require 'treetop/version'
  
- if ARGV.empty?
-diff -ur treetop-1.3.0-o/lib/treetop/bootstrap_gen_1_metagrammar.rb treetop-1.3.0/lib/treetop/bootstrap_gen_1_metagrammar.rb
---- treetop-1.3.0-o/lib/treetop/bootstrap_gen_1_metagrammar.rb	1969-12-31 17:00:00.000000000 -0700
-+++ treetop-1.3.0/lib/treetop/bootstrap_gen_1_metagrammar.rb	2009-08-09 15:28:09.252772466 -0600
+diff -ur ruby-treetop-1.4.4/lib/treetop/bootstrap_gen_1_metagrammar.rb ruby-treetop-1.4.4-nogems/lib/treetop/bootstrap_gen_1_metagrammar.rb
+--- ruby-treetop-1.4.4/lib/treetop/bootstrap_gen_1_metagrammar.rb	2010-02-20 01:30:39.000000000 +0100
++++ ruby-treetop-1.4.4-nogems/lib/treetop/bootstrap_gen_1_metagrammar.rb	2010-03-02 16:22:50.532123974 +0100
 @@ -1,16 +1,7 @@
  # This file's job is to load a Treetop::Compiler::Metagrammar and Treetop::Compiler::MetagrammarParser
  # into the environment by compiling the current metagrammar.treetop using a trusted version of Treetop.
@@ -46,15 +47,19 @@ diff -ur treetop-1.3.0-o/lib/treetop/bootstrap_gen_1_metagrammar.rb treetop-1.3.
 -$bootstrapped_gen_1_metagrammar = true
 \ No newline at end of file
 +$bootstrapped_gen_1_metagrammar = true
-diff -ur treetop-1.3.0-o/lib/treetop.rb treetop-1.3.0/lib/treetop.rb
---- treetop-1.3.0-o/lib/treetop.rb	1969-12-31 17:00:00.000000000 -0700
-+++ treetop-1.3.0/lib/treetop.rb	2009-08-09 15:27:12.195268768 -0600
-@@ -1,11 +1,6 @@
+diff -ur ruby-treetop-1.4.4/lib/treetop.rb ruby-treetop-1.4.4-nogems/lib/treetop.rb
+--- ruby-treetop-1.4.4/lib/treetop.rb	2010-02-20 01:30:39.000000000 +0100
++++ ruby-treetop-1.4.4-nogems/lib/treetop.rb	2010-03-02 16:23:57.301124234 +0100
+@@ -1,5 +1,3 @@
 -require 'rubygems'
 -
--dir = File.dirname(__FILE__)
--
--TREETOP_ROOT = File.join(dir, 'treetop')
+ module Treetop
+   VALID_GRAMMAR_EXT = ['treetop', 'tt']
+   VALID_GRAMMAR_EXT_REGEXP = /\.(#{VALID_GRAMMAR_EXT.join('|')})\Z/o
+@@ -8,9 +6,9 @@
+ dir = File.dirname(__FILE__)
+ 
+ TREETOP_ROOT = File.join(dir, 'treetop')
 -require File.join(TREETOP_ROOT, "ruby_extensions")
 -require File.join(TREETOP_ROOT, "runtime")
 -require File.join(TREETOP_ROOT, "compiler")
@@ -63,4 +68,4 @@ diff -ur treetop-1.3.0-o/lib/treetop.rb treetop-1.3.0/lib/treetop.rb
 +require "treetop/compiler"
  
  require 'polyglot'
- Polyglot.register(["treetop", "tt"], Treetop)
+ Polyglot.register(Treetop::VALID_GRAMMAR_EXT, Treetop)
