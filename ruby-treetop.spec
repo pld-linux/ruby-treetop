@@ -13,14 +13,15 @@ BuildRequires:	rpmbuild(macros) >= 1.484
 BuildRequires:	ruby >= 1:1.8.6
 BuildRequires:	ruby-modules
 BuildRequires:	ruby-rake
+BuildRequires:	setup.rb
 Requires:	ruby-polyglot
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 Treetop is a Ruby-based DSL for text parsing and interpretation. It
 facilitates an extension of the object-oriented paradigm called
-syntax-oriented programming. There's a readme that will get you going and some
-examples.
+syntax-oriented programming. There's a readme that will get you going
+and some examples.
 
 %package rdoc
 Summary:	HTML documentation for %{pkgname}
