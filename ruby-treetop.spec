@@ -12,7 +12,6 @@ URL:		http://treetop.rubyforge.org
 BuildRequires:	rpmbuild(macros) >= 1.484
 BuildRequires:	ruby >= 1:1.8.6
 BuildRequires:	ruby-modules
-BuildRequires:	ruby-rake
 BuildRequires:	setup.rb
 Requires:	ruby-polyglot
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
