@@ -1,12 +1,12 @@
 %define pkgname treetop
 Summary:	A packrat parser implementation for Ruby
 Name:		ruby-%{pkgname}
-Version:	1.4.4
-Release:	3
+Version:	1.4.15
+Release:	1
 License:	Ruby's
 Group:		Development/Languages
 Source0:	http://rubygems.org/downloads/%{pkgname}-%{version}.gem
-# Source0-md5:	ec3ab6dd87a435837f1bd2b67543446a
+# Source0-md5:	87f30c0684d7760dce9feac8ff8bd869
 Patch0:		%{name}-gems.patch
 URL:		http://treetop.rubyforge.org
 BuildRequires:	rpmbuild(macros) >= 1.484
@@ -47,14 +47,13 @@ ri documentation for %{pkgname}.
 Dokumentacji w formacie ri dla %{pkgname}.
 
 %prep
-%setup -q -c
-%{__tar} xf %{SOURCE0} -O data.tar.gz | %{__tar} xz
-find -newer README.md -o -print | xargs touch --reference %{SOURCE0}
-%patch0 -p1
-
+%setup -q -n %{pkgname}-%{version}
 cp %{_datadir}/setup.rb .
 
 %build
+# write .gemspec
+%__gem_helper spec
+
 ruby setup.rb config \
 	--rbdir=%{ruby_rubylibdir} \
 	--sodir=%{ruby_archdir}
@@ -76,6 +75,10 @@ ruby setup.rb install \
 cp -a ri/* $RPM_BUILD_ROOT%{ruby_ridir}
 cp -a rdoc $RPM_BUILD_ROOT%{ruby_rdocdir}/%{name}-%{version}
 
+# install gemspec
+install -d $RPM_BUILD_ROOT%{ruby_specdir}
+cp -p %{pkgname}-%{version}.gemspec $RPM_BUILD_ROOT%{ruby_specdir}
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -84,6 +87,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc README.md doc/* examples
 %attr(755,root,root) %{_bindir}/tt
 %{ruby_rubylibdir}/treetop*
+%{ruby_specdir}/%{pkgname}-%{version}.gemspec
 
 %files rdoc
 %defattr(644,root,root,755)
