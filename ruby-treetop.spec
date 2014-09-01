@@ -7,7 +7,6 @@ License:	Ruby's
 Group:		Development/Languages
 Source0:	http://rubygems.org/downloads/%{pkgname}-%{version}.gem
 # Source0-md5:	87f30c0684d7760dce9feac8ff8bd869
-Patch0:		%{name}-gems.patch
 URL:		http://treetop.rubyforge.org
 BuildRequires:	rpmbuild(macros) >= 1.484
 BuildRequires:	ruby >= 1:1.8.6
