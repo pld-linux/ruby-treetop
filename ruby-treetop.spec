@@ -2,7 +2,7 @@
 Summary:	A packrat parser implementation for Ruby
 Name:		ruby-%{pkgname}
 Version:	1.4.15
-Release:	1
+Release:	2
 License:	Ruby's
 Group:		Development/Languages
 Source0:	http://rubygems.org/downloads/%{pkgname}-%{version}.gem
